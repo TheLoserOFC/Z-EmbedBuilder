@@ -1,0 +1,73 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/embed.css">
+</head>
+
+<body>
+    <!--o preview será substituido pelo embed-->
+    <div class="embedPreview"></div>
+
+    <!--O Manipulador da embed usa o JQuery para fazer as alterações, importe antes do script embedbuilder.js-->
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <!--Importe a lib para a alteração-->
+    <script src="/js/EmbedBuilder.js"></script>
+
+    <script>
+
+
+        // O Embed usa a sintaxe JSON original do discord, faça o objeto igual ao Discord
+        const embedExample = {
+            author: {
+                name: "asda",
+                url: "https://i.pinimg.com/236x/97/58/e9/9758e99bc2a781e129fe1ae5dc794c87.jpg",
+                icon_url: "https://i.pinimg.com/236x/97/58/e9/9758e99bc2a781e129fe1ae5dc794c87.jpg"
+            },
+            thumbnail: {
+                url: "https://cdn.discordapp.com/attachments/1156023171150004235/1190285389206921216/perfil.gif?ex=65aa7927&is=65980427&hm=0f3eba814f91be624decf2d4281b89358d80b79463e26dc4e7219f7cd03240a3&"
+            },
+            image: {
+                url: "https://cdn.discordapp.com/attachments/1156023171150004235/1174341936853827655/discord.gif?ex=65a7d7a7&is=659562a7&hm=c16428893f58b364b7e71be80b7758bd31c26187a07192173709d5e5605b3d84&"
+            },
+            footer: {
+                text: "Atualizado às {hr}:{mn}:{sc}",
+                icon_url: "https://i.pinimg.com/236x/97/58/e9/9758e99bc2a781e129fe1ae5dc794c87.jpg"
+            },
+            fields: [
+                {
+                    name: ":arrows_counterclockwise: **Status:**",
+                    value: "```{STATUS}```",
+                    inline: true
+                },
+                {
+                    name: ":busts_in_silhouette: **Jogadores:**",
+                    value: "```[ONLINEPLAYERS}/{MAXPLAYERS}]```",
+                    inline: true
+                },
+                {
+                    name: ":electric_plug: **IP DA CIDADE:**",
+                    value: "````SEUIP.COM````",
+                    inline: false
+                }
+            ],
+            title: "**Titulo**",
+            description: "> Próxima atualização {cooldown}"
+        }
+
+
+        //Faz o embedPreview ser alterado para o HTML da Embed inicial
+        initializeGUI(embedExample) 
+
+        //Use algumma forma para fazer a atualização ao executar a edição do JSON (nesse caso sempre que o uma tecla é apertada)
+        document.addEventListener('keydown', (e) => {
+            //Realiza o update da embed.
+            updateGUI(embedExample)
+        })
+
+
+    </script>
+</body>
+
+</html>
